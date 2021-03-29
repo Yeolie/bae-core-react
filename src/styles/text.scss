@@ -1,0 +1,120 @@
+@import "./color.scss";
+
+$fontsizeamounts: (
+    5,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    18,
+    20,
+    22,
+    24,
+    25,
+    26,
+    28,
+    30,
+    35,
+    36,
+    38,
+    40,
+    45,
+    48,
+    50,
+    60,
+    72,
+    75,
+    100
+);
+
+@each $fontsize in $fontsizeamounts {
+    .text-#{$fontsize} {
+        font-size: #{$fontsize}px !important;
+    }
+
+    .line-height-#{$fontsize} {
+        line-height: #{$fontsize}px !important;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-normal {
+    font-weight: normal;
+}
+
+.text-semibold {
+    font-weight: 500;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.text-line-through {
+    text-decoration: line-through;
+}
+
+.text-underline {
+    text-decoration: underline;
+}
+
+.text-default {
+    color: #3c4858 !important;
+}
+
+.text-primary {
+    color: $text-primary !important;
+}
+
+.text-secondary {
+}
+
+.text-success {
+    // color: $text-success;
+}
+
+.text-warning {
+    // color: $text-warning;
+}
+
+.text-danger {
+    color: $text-danger;
+}
+
+.text-info {
+}
+
+.text-006FBB {
+    color: #006fbb;
+}
+
+.text-grey-1 {
+    color: $text-grey-1 !important;
+}
+
+.text-grey-2 {
+    color: $text-grey-2 !important;
+}
+
+.text-grey {
+    color: $text-grey !important;
+}
+
+.text-truncate {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.text-highlight {
+    color: $text-primary;
+}
+
+.text-blue {
+    color: $text-blue !important;
+}

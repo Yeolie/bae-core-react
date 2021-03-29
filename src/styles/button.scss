@@ -1,0 +1,201 @@
+@import "./color.scss";
+
+button:focus,
+button:active,
+button:visited {
+    outline: none;
+}
+
+.btn-primary {
+    background-color: $text-primary !important;
+    border-color: $text-primary !important;
+}
+
+.btn-outline-dark {
+    border: 1px solid #d9d9d9;
+    border-radius: 16px;
+    color: #595959;
+
+    &:disabled {
+        border: 1px solid $text-disabled;
+    }
+
+    &:hover:not(:disabled),
+    &:focus:not(:disabled),
+    &:active:not(:disabled) {
+        color: white;
+        background-color: $text-disabled;
+        border-color: $text-disabled;
+    }
+}
+
+.btn-outline-primary {
+    color: $text-primary !important;
+    border-color: $text-primary !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: $text-primary-1 !important;
+    color: #ffffff !important;
+}
+
+.btn-outline-secondary {
+    color: $text-blue !important;
+    border-color: $text-blue !important;
+}
+
+.btn-outline-secondary:hover {
+    background-color: $text-blue !important;
+    color: #ffffff !important;
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary:visited {
+    background-color: $text-primary !important;
+    border-color: $text-primary !important;
+    box-shadow: 0 0 0 0.2rem #ffe8e4 !important;
+    color: #ffffff !important;
+}
+
+.btn-outline-primary:disabled {
+    opacity: 0.65;
+    color: $text-primary !important;
+    background-color: #ffffff !important;
+    border-color: $text-primary !important;
+    pointer-events: none;
+    // &:hover {
+    //     user-select: none;
+    //     cursor: not-allowed;
+    //     color: #0A1F44 !important;
+    //     background-color: #ffffff !important;
+    //     border-color: $text-secondary !important;
+    // }
+}
+
+.btn-primary:hover {
+    background-color: $text-primary-1 !important;
+    border-color: $text-primary-1 !important;
+}
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:visited {
+    background-color: $text-primary !important;
+    border-color: $text-primary !important;
+    box-shadow: 0 0 0 0.2rem #ffe8e4 !important;
+}
+
+.btn-primary:disabled {
+    color: white !important;
+    background-color: $text-disabled !important;
+    border-color: $text-disabled !important;
+
+    &:hover {
+        user-select: none;
+        cursor: not-allowed;
+    }
+}
+
+.btn-secondary {
+    color: white !important;
+    background-color: $text-blue !important;
+    border-color: $text-blue !important;
+}
+
+.btn-secondary:not(:disabled):hover {
+    background-color: $text-blue-1 !important;
+    border-color: $text-blue-1 !important;
+}
+
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary:visited {
+    background-color: $text-blue !important;
+    border-color: $text-blue !important;
+    box-shadow: 0 0 0 0.2rem rgba(241, 243, 245, 0.5) !important;
+}
+
+.btn-secondary:disabled {
+    opacity: 0.5;
+    color: white !important;
+    background-color: $text-disabled !important;
+    border-color: $text-disabled !important;
+
+    &:hover {
+        user-select: none;
+        cursor: not-allowed;
+    }
+}
+
+//Notify custom button
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px !important;
+    line-height: 1;
+    padding: 5px 8px;
+    font-size: 14px;
+}
+
+.btn-light {
+    color: #3d3837 !important;
+    background-color: $text-light !important;
+    border-color: $text-light !important;
+}
+
+.btn-light:not(:disabled):hover {
+    background-color: $text-light-hover !important;
+    border-color: $text-light-hover !important;
+}
+
+.btn-light:focus,
+.btn-light:active,
+.btn-light:visited {
+    background-color: $text-light !important;
+    border-color: $text-light !important;
+    box-shadow: 0 0 0 0.2rem rgba(241, 243, 245, 0.5) !important;
+}
+
+.btn-light:disabled {
+    color: #0a1f44 !important;
+    background-color: #ffffff !important;
+    border-color: $text-light !important;
+
+    &:hover {
+        user-select: none;
+        cursor: not-allowed;
+    }
+}
+
+.btn-grey {
+    color: white !important;
+    background-color: $text-grey !important;
+    border-color: $text-grey !important;
+}
+
+.btn-grey:not(:disabled):hover {
+    background-color: $text-grey-1 !important;
+    border-color: $text-grey-1 !important;
+}
+
+.btn-grey:focus,
+.btn-grey:active,
+.btn-grey:visited {
+    background-color: $text-grey !important;
+    border-color: $text-grey !important;
+    box-shadow: 0 0 0 0.2rem rgba(241, 243, 245, 0.5) !important;
+}
+
+.btn-grey:disabled {
+    opacity: 0.5;
+    color: white !important;
+    background-color: $text-disabled !important;
+    border-color: $text-disabled !important;
+
+    &:hover {
+        user-select: none;
+        cursor: not-allowed;
+    }
+}

@@ -1,0 +1,33 @@
+.floating-button {
+    position: fixed;
+    // right: 2%;
+    bottom: 0;
+    z-index: 500;
+    
+
+    .item-button {
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 2s ease 0.2s;
+        bottom: 0;
+        position: fixed;
+        right: 15px;
+
+        $n: 10;
+
+        @for $i from 1 through $n {
+            &:nth-child(#{$n + 1 - $i}) {
+                bottom: #{600 - $i * 60 + 100}px;
+                
+            }
+        }
+    }
+}
+

@@ -1,0 +1,44 @@
+.loading-screen {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loading-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            path {
+                fill: #f26522 !important;
+            }
+            
+        }
+
+        .loading-progress-container {
+            display: block;
+            width: 150px;
+            margin-top: 10px;
+
+            .loading-progress-bar {
+                &.progress {
+                    height: 5px;
+                    
+                    .progress-bar {
+                        background-color: #f26522;
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}

@@ -1,0 +1,40 @@
+.modal-header {
+    .close{
+        opacity: 1;
+    }
+    .modal-title {
+        font-size: 20px;
+    }
+}
+.modal-body {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.modal-content {
+    border: 0 !important;
+}
+
+.modal-footer {
+    // padding-top: 8px !important;
+    // border-top: 0 !important;
+}
+
+.notify-modal {
+    .modal-content {
+        .modal-header {
+            border-bottom: none;
+            padding-bottom: 5px;
+            .modal-title {
+                color: #00476f;
+            }
+        }
+        .modal-body {
+            color: #717171;
+            padding-top: 10px !important;
+            padding-bottom: 15px !important;
+        }
+    }
+}

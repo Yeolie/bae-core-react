@@ -1,0 +1,16 @@
+.dropdown-item-custom {
+    padding: 8px 12px 7px;
+    background-color: #FFFFFF;
+    color: #0A1F44;
+    cursor: pointer;
+    text-align: initial;
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+    &:hover {
+        background: rgba(223, 227, 232, 0.4);
+        // color: #FFFFFF !important;
+    }
+}

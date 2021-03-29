@@ -1,0 +1,19 @@
+@import "../../styles/color.scss";
+
+.forbidden-page {
+    text-align: center;
+
+    svg {
+        padding-left: 28px;
+    }
+
+    .title {
+        font-size: 28px;
+        line-height: 38px;
+        text-align: center;
+        color: $text-primary;
+    }
+    .subtitle {
+        font-size: 16px;
+    }
+}

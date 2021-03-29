@@ -1,0 +1,24 @@
+$iconsizeamounts: (5, 10, 12, 14, 15, 16, 18, 20, 24, 30, 35, 36, 40, 45, 48, 50, 60, 72, 75, 100);
+
+@each $iconsize in $iconsizeamounts {
+    .icon-#{$iconsize} {
+        width: #{$iconsize}px !important;
+        height: #{$iconsize}px !important;
+    }
+}
+
+.icon-white {
+    fill: #FFFFFF;
+
+    path {
+        fill: #FFFFFF;
+    }
+}
+
+.icon-danger {
+    fill: #dc3545;
+
+    path {
+        fill: #dc3545;
+    }
+}

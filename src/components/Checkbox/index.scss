@@ -1,0 +1,89 @@
+﻿
+.next-input-checkbox {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+
+.next-input-checkbox .next-checkbox,
+.next-input-checkbox .next-checkbox--styled {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 16px;
+    width: 16px;
+    border: 1px solid #E3E9ED;
+    background-color: #E3E9ED;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    /* vertical-align: middle; */
+    cursor: pointer;
+
+    &.radius-cycle {
+        border-radius: 50% !important;
+    }
+}
+
+.next-input-checkbox .next-checkbox {
+    z-index: 2;
+    opacity: 0;
+}
+
+.next-input-checkbox .next-checkbox:hover+.next-checkbox--styled {
+    background-color: #BAC8D2;
+    border-color: #BAC8D2;
+}
+
+.next-input-checkbox .next-checkbox:disabled+.next-checkbox--styled {
+    opacity: 0.4;
+    background-color: #E3E9ED;
+}
+
+.next-input-checkbox .next-checkbox--styled {
+    color: #fff;
+    border-color: #E3E9ED;
+    border-radius: 2px;
+    z-index: 1;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.next-input-checkbox .next-checkbox--styled .svg-next-icon {
+    display: block;
+    top: 2px;
+    left: 2px;
+    position: absolute;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: -webkit-transform 0.1s ease-in-out;
+    transition: -webkit-transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out, -webkit-transform 0.1s ease-in-out;
+    z-index: 2;
+}
+
+.next-input-checkbox .next-checkbox:checked~.next-checkbox--styled {
+    background-color: #F26522;
+    border-color: #F26522;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-input-checkbox .next-checkbox:checked:hover~.next-checkbox--styled {
+    background-color:#F26522;
+    border-color: #F26522;
+}
+
+.next-input-checkbox .next-checkbox:checked~.next-checkbox--styled .svg-next-icon.checkmark {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.next-input-checkbox .next-checkbox.input-disabled+.next-checkbox--styled {
+    cursor: not-allowed;
+    border: 1px solid #9CA7B2;
+}

@@ -1,0 +1,135 @@
+.modal-custom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    overflow-y: auto;
+
+    .opacity-0 {
+        opacity: 0;
+    }
+
+    .opacity-100 {
+        opacity: 100;
+    }
+
+    .ease-out {
+        transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    .ease-in {
+        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    .duration-300 {
+        transition-duration: 300ms;
+    }
+
+    .duration-200 {
+        transition-duration: 200ms;
+    }
+
+    .modal-custom-container {
+        position: relative;
+        min-height: 100vh;
+        padding-top: 16px;
+        padding-bottom: 80px;
+        text-align: center;
+        display: block;
+        padding: 0px;
+
+        .modal-custom-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition-property: opacity;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+
+            .modal-custom-overlay-item {
+                position: absolute;
+                background-color: #000000;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0.9;
+            }
+        }
+
+        .modal-custom-hidden-item {
+            display: inline-block;
+            vertical-align: middle;
+            height: 100vh;
+        }
+
+        .transition-enter-start {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .transition-enter-end {
+            opacity: 100;
+            transform: scale(1);
+        }
+
+        .transition-leave-start {
+            opacity: 100;
+            transform: scale(1);
+        }
+
+        .transition-leave-end {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .transition-enter,
+        .transition-leave {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 500ms;
+        }
+
+        .modal-custom-panel-container {
+            position: relative;
+            display: inline-block;
+
+            .close-button {
+                cursor: pointer;
+                position: absolute;
+                top: 4px;
+                right: 0px;
+            }
+
+            .modal-custom-content-container {
+                position: relative;
+                display: inline-block;
+                vertical-align: bottom;
+                background-color: #FFFFFF;
+                border-radius: 12px;
+                text-align: left;
+
+                z-index: 9999;
+
+                margin-top: 32px;
+                margin-bottom: 32px;
+                vertical-align: middle;
+
+                .modal-custom-content {
+                    position: relative;
+                    background-color: #FFFFFF;
+                    padding: 15px;
+                    border-radius: 12px;
+
+                    @media (min-width: 640px) {
+                        padding: 15px;
+                    }
+                }
+            }
+        }
+    }
+}

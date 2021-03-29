@@ -1,0 +1,98 @@
+@import "../../styles/color.scss";
+
+.input-suggest {
+    box-shadow: none;
+    position: relative;
+    z-index: 99;
+
+    &.suffix-icon {
+        .search-input {
+            display: block;
+            padding-right: 34px;
+        }
+
+        .input-icon-suffix {
+            position: absolute;
+            right: 7px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &.prefix-icon {
+        .search-input {
+            display: block;
+            padding-left: 34px;
+            transition: all 0.5s;
+        }
+
+        .input-icon-prefix {
+            position: absolute;
+            left: 7px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .search-input {
+        // width: 410px;
+        // border: 1px solid #D9D9D9;
+        border: 0;
+        border-radius: 6px;
+        color: #033659;
+        background: #f5f5f5;
+    }
+
+    .input-address {
+        color: #141414;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        width: 356px;
+    }
+
+    .input-suggest-dropdown-items {
+        position: absolute;
+        top: 45px;
+        width: 100%;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border-radius: 4px;
+        overflow-y: scroll;
+
+        .input-suggest-dropdown-item {
+            width: 100%;
+            padding: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 19px;
+            color: #141414;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            &:hover {
+                background-color: #f5f5f5;
+            }
+
+            .action {
+                color: $text-blue;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .input-suggest {
+        width: 100%;
+
+        .search-input {
+            width: 100% !important;
+        }
+    }
+}
