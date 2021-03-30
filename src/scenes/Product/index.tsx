@@ -1,14 +1,15 @@
-import classNames from "classnames"
 import React from "react"
 import { Container, Row, Col } from "react-bootstrap"
+import { ICategory, IShop } from "../../model"
 import { getShopDetail } from "../../utils/apis/product"
-import { fakeProduct, menu } from "./data"
+import { Categories } from "./Categories"
 import "./index.scss"
 
 interface ProductProps {}
 
 interface ProductState {
-    selectedMenu: string
+    selectedMenu: ICategory
+    shopDetail: IShop
 }
 
 export interface IProduct {
@@ -23,10 +24,10 @@ export interface IProduct {
 class Product extends React.Component<ProductProps, ProductState> {
     constructor(props) {
         super(props)
-        this.state = { selectedMenu: "all" }
+        this.state = { selectedMenu: {} as ICategory, shopDetail: {} as IShop }
     }
 
-    private changeMenu = (menu: string) => {
+    private changeMenu = (menu: ICategory) => {
         this.setState({ selectedMenu: menu })
     }
 
@@ -38,7 +39,7 @@ class Product extends React.Component<ProductProps, ProductState> {
     private getShop = async (username: string, limit: number, offset: number) => {
         try {
             let response = await getShopDetail(username, limit, offset)
-            if (response) console.log(response)
+            if (response) this.setState({ shopDetail: response?.data[0] })
         } catch (error) {}
     }
 
@@ -47,7 +48,7 @@ class Product extends React.Component<ProductProps, ProductState> {
     }
 
     render() {
-        const { selectedMenu } = this.state
+        const { selectedMenu, shopDetail } = this.state
         return (
             <div className="product-container">
                 <Container fluid className="p-0 full-height">
@@ -56,23 +57,17 @@ class Product extends React.Component<ProductProps, ProductState> {
                             <div className="product-menu">
                                 <div className="text-30">Shopee crawl</div>
                                 <div className="m-t-20">
-                                    {menu?.map((item) => (
-                                        <div
-                                            key={item.value}
-                                            className={classNames("menu-item", {
-                                                active: selectedMenu === item.value,
-                                            })}
-                                            onClick={() => this.changeMenu(item.value)}
-                                        >
-                                            {item.label}
-                                        </div>
-                                    ))}
+                                    <Categories
+                                        selectedItem={selectedMenu}
+                                        shopId={shopDetail.id}
+                                        changeItem={this.changeMenu}
+                                    />
                                 </div>
                             </div>
                         </Col>
                         <Col sm={9}>
                             <div className="p-20 block-center block-left">
-                                {this.getProduct(selectedMenu, fakeProduct)?.map((item, index) => (
+                                {/* {this.getProduct(selectedMenu, fakeProduct)?.map((item, index) => (
                                     <div key={index} className="product">
                                         <div className="img-wrapper">
                                             <img src={item.src} alt={item.name} />
@@ -85,7 +80,7 @@ class Product extends React.Component<ProductProps, ProductState> {
                                             <div>{item.sale_price}</div>
                                         </div>
                                     </div>
-                                ))}
+                                ))} */}
                             </div>
                         </Col>
                     </Row>
