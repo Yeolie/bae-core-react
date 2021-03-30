@@ -1,6 +1,7 @@
 import classNames from "classnames"
 import React from "react"
 import { Container, Row, Col } from "react-bootstrap"
+import { getShopDetail } from "../../utils/apis/product"
 import { fakeProduct, menu } from "./data"
 import "./index.scss"
 
@@ -32,6 +33,17 @@ class Product extends React.Component<ProductProps, ProductState> {
     private getProduct = (menu: string, listProduct: IProduct[]) => {
         if (menu === "all") return listProduct
         return listProduct.filter((el) => el.category === menu)
+    }
+
+    private getShop = async (username: string, limit: number, offset: number) => {
+        try {
+            let response = await getShopDetail(username, limit, offset)
+            if (response) console.log(response)
+        } catch (error) {}
+    }
+
+    componentDidMount() {
+        this.getShop("apple_flagship_store", 10, 0)
     }
 
     render() {
