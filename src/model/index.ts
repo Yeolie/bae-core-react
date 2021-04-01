@@ -14,3 +14,16 @@ export interface ICategory {
     name: string
     id: number
 }
+
+export interface IProduct {
+    status: number
+    sold: number
+    shopid: number
+    price_before_discount: number
+    price: number
+    name: string
+    itemid: number
+    item_status: string
+    image: string
+    discount: string
+}

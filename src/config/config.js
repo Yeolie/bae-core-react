@@ -5,6 +5,9 @@ export const api = {
         url: domain + "/get_shop_info",
     },
     getCategory: {
-        url: domain + "/get_shop_info",
+        url: domain + "/get_categories",
+    },
+    getProducts: {
+        url: domain + "/get_items_by_cat",
     },
 }

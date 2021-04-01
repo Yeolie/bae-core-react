@@ -1,45 +1,56 @@
+import classNames from "classnames"
 import React from "react"
 import { Container, Row, Col } from "react-bootstrap"
-import { ICategory, IShop } from "../../model"
-import { getShopDetail } from "../../utils/apis/product"
-import { Categories } from "./Categories"
+import { ICategory, IProduct, IShop } from "../../model"
+import { getCategory, getProducts, getShopDetail } from "../../utils/apis/product"
 import "./index.scss"
 
 interface ProductProps {}
 
 interface ProductState {
-    selectedMenu: ICategory
+    selectedCategory: ICategory
     shopDetail: IShop
-}
-
-export interface IProduct {
-    id: string
-    name: string
-    src: string
-    category: string
-    price: number
-    sale_price?: number
+    categories: ICategory[]
+    products: IProduct[]
 }
 
 class Product extends React.Component<ProductProps, ProductState> {
     constructor(props) {
         super(props)
-        this.state = { selectedMenu: {} as ICategory, shopDetail: {} as IShop }
+        this.state = { categories: [], selectedCategory: {} as ICategory, shopDetail: {} as IShop, products: [] }
     }
 
-    private changeMenu = (menu: ICategory) => {
-        this.setState({ selectedMenu: menu })
+    private changeMenu = (category: ICategory) => {
+        this.setState({ selectedCategory: category })
+        this.getProduct(category.shop_collection_id, category.shop_id)
     }
 
-    private getProduct = (menu: string, listProduct: IProduct[]) => {
-        if (menu === "all") return listProduct
-        return listProduct.filter((el) => el.category === menu)
+    private genImage = (imageId: string) => {
+        return "https://cf.shopee.vn/file/" + imageId
+    }
+
+    private getProduct = async (categoryId: number, shopId: number) => {
+        try {
+            let response = await getProducts(shopId, categoryId)
+            if (response) this.setState({ products: response })
+        } catch (error) {}
+    }
+
+    private getCategories = async (shop_id: number) => {
+        let response = await getCategory(shop_id)
+        if (response) {
+            await this.getProduct(response[0]?.shop_collection_id, shop_id)
+            this.setState({ categories: response, selectedCategory: response[0] })
+        }
     }
 
     private getShop = async (username: string, limit: number, offset: number) => {
         try {
             let response = await getShopDetail(username, limit, offset)
-            if (response) this.setState({ shopDetail: response?.data[0] })
+            if (response) {
+                await this.getCategories(response[0]?.shopid)
+                this.setState({ shopDetail: response[0] })
+            }
         } catch (error) {}
     }
 
@@ -48,7 +59,7 @@ class Product extends React.Component<ProductProps, ProductState> {
     }
 
     render() {
-        const { selectedMenu, shopDetail } = this.state
+        const { selectedCategory, categories, products } = this.state
         return (
             <div className="product-container">
                 <Container fluid className="p-0 full-height">
@@ -57,30 +68,36 @@ class Product extends React.Component<ProductProps, ProductState> {
                             <div className="product-menu">
                                 <div className="text-30">Shopee crawl</div>
                                 <div className="m-t-20">
-                                    <Categories
-                                        selectedItem={selectedMenu}
-                                        shopId={shopDetail.id}
-                                        changeItem={this.changeMenu}
-                                    />
+                                    {categories?.map((item) => (
+                                        <div
+                                            key={item.id}
+                                            className={classNames("categories-item pointer", {
+                                                active: selectedCategory?.id === item.id,
+                                            })}
+                                            onClick={() => this.changeMenu(item)}
+                                        >
+                                            {item.name}
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </Col>
                         <Col sm={9}>
-                            <div className="p-20 block-center block-left">
-                                {/* {this.getProduct(selectedMenu, fakeProduct)?.map((item, index) => (
+                            <div className="list-product block-center block-left block-wrap">
+                                {products?.map((item, index) => (
                                     <div key={index} className="product">
                                         <div className="img-wrapper">
-                                            <img src={item.src} alt={item.name} />
+                                            <img src={this.genImage(item.image)} alt={item.name} />
                                         </div>
-                                        <div className="name">{item.name}</div>
+                                        <div className="name text-truncate">{item.name}</div>
                                         <div className="block-center-between">
-                                            <div className={classNames({ "old-price": item.sale_price })}>
-                                                {item.price}
+                                            <div className={classNames({ "old-price": item.price })}>
+                                                {item.price_before_discount / 1000000}
                                             </div>
-                                            <div>{item.sale_price}</div>
+                                            <div>{item.price / 1000000}</div>
                                         </div>
                                     </div>
-                                ))} */}
+                                ))}
                             </div>
                         </Col>
                     </Row>
