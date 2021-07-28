@@ -4,7 +4,7 @@ import { Redirect, Route, Switch } from "react-router-dom"
 
 import { connect } from "react-redux"
 import { StateReducer } from "./store/root-reducer"
-import Product from "./scenes/Product"
+import TradeCoin from "./scenes/TradeCoin"
 
 interface RoutesProps {}
 
@@ -12,8 +12,8 @@ class Routes extends React.PureComponent<RoutesProps, {}> {
     render() {
         return (
             <Switch>
-                <Route exact name="Product" path="/product" component={Product} />
-                <Redirect exact from="/" to="/product" />
+                <Route exact name="TradeCoin" path="/trading" component={TradeCoin} />
+                <Redirect exact from="/" to="/trading" />
 
                 {/** Declare route above this line */}
             </Switch>
